@@ -18,36 +18,32 @@ class HalamanSatu extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            new Card(
-              child: new Column(
-                children: <Widget>[
-                  new Icon(
-                    Icons.home,
-                    size: 50.0,
-                    color: Colors.brown,
-                  ),
-                  new Text(
-                    "home",
-                    style: new TextStyle(fontSize: 20.0),
-                  )
-                ],
-              ),
+            new CardSaya(),
+            new CardSaya(),
+            new CardSaya(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CardSaya extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      child: new Card(
+        child: new Column(
+          children: <Widget>[
+            new Icon(
+              Icons.home,
+              size: 50.0,
+              color: Colors.brown,
             ),
-            new Card(
-              child: new Column(
-                children: <Widget>[
-                  new Icon(
-                    Icons.home,
-                    size: 50.0,
-                    color: Colors.brown,
-                  ),
-                  new Text(
-                    "home",
-                    style: new TextStyle(fontSize: 20.0),
-                  )
-                ],
-              ),
-            ),
+            new Text(
+              "home",
+              style: new TextStyle(fontSize: 20.0),
+            )
           ],
         ),
       ),
