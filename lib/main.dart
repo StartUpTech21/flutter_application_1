@@ -4,76 +4,54 @@ void main() {
   runApp(MaterialApp(
     title: "Sidafa Aplication",
     home: HalamanSatu(),
+    routes: <String, WidgetBuilder>{
+      '/HalSatu': (BuildContext context) => new HalamanSatu(),
+      '/HalDua': (BuildContext context) => new HalamanDua(),
+    },
   ));
 }
 
 class HalamanSatu extends StatelessWidget {
+  // get onPressed => null;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: const Text("card & Parsing"),
-      ),
-      body: new Container(
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            new CardSaya(
-              icon: Icons.home,
-              teks: "Home",
-              warnaIcon: Colors.brown,
-            ),
-            new CardSaya(
-              icon: Icons.favorite,
-              teks: "Favorite",
-              warnaIcon: Colors.pink,
-            ),
-            new CardSaya(
-              icon: Icons.place,
-              teks: "Place",
-              warnaIcon: Colors.blue,
-            ),
-            new CardSaya(
-              icon: Icons.settings,
-              teks: "Setting",
-              warnaIcon: Colors.black,
-            ),
-          ],
+        appBar: new AppBar(
+          title: new Text("Music"),
         ),
-      ),
-    );
+        body: new Center(
+          child: new IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/HalDua');
+            },
+            icon: new Icon(
+              Icons.headset,
+              size: 50.0,
+            ),
+          ),
+        ));
   }
 }
 
-class CardSaya extends StatelessWidget {
-  CardSaya({
-    required this.icon,
-    required this.teks,
-    required this.warnaIcon,
-  });
-  final IconData icon;
-  final String teks;
-  final Color warnaIcon;
-
+class HalamanDua extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      padding: new EdgeInsets.all(10.0),
-      child: new Card(
-        child: new Column(
-          children: <Widget>[
-            new Icon(
-              icon,
-              size: 50.0,
-              color: warnaIcon,
-            ),
-            new Text(
-              teks,
-              style: new TextStyle(fontSize: 20.0),
-            )
-          ],
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Speaker"),
         ),
-      ),
-    );
+        body: new Center(
+          child: new IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/HalSatu');
+            },
+            icon: new Icon(
+              Icons.speaker,
+              size: 50.0,
+              color: Colors.red,
+            ),
+          ),
+        ));
   }
 }
