@@ -17,13 +17,11 @@ class HalHallo extends StatelessWidget {
         width: 200.0,
         height: 100.0,
         child: new Center(
-          child: new Text(
-            "Panca Developer",
-            style: new TextStyle(
-                color: Colors.black, fontFamily: "Serif", fontSize: 18.0),
-          ),
+          child: new Icon(Icons.favorite, color: Colors.yellow, size: 30.0),
         ),
       ),
     ));
   }
 }
+
+//docs.flutter.io/flutter/material/Icons-class.html
