@@ -58,6 +58,7 @@ class CardSaya extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      padding: new EdgeInsets.all(10.0),
       child: new Card(
         child: new Column(
           children: <Widget>[
