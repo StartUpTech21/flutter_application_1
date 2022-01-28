@@ -11,7 +11,19 @@ class HalHallo extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         body: new Center(
-      child: new Text("hello world"),
+      child: new Container(
+        //id=kotak
+        color: Colors.blue[200],
+        width: 200.0,
+        height: 100.0,
+        child: new Center(
+          child: new Text(
+            "Panca Developer",
+            style: new TextStyle(
+                color: Colors.black, fontFamily: "Serif", fontSize: 18.0),
+          ),
+        ),
+      ),
     ));
   }
 }
