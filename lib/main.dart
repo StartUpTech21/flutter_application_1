@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import './hal_komputer.dart' as komputer;
-import './hal_radio.dart' as radio;
-import './hal_headset.dart' as headset;
-import './hal_smartphone.dart' as smartphone;
+import 'hal_beranda.dart' as beranda;
+import 'hal_administrasi.dart' as administrasi;
+import 'hal_santri.dart' as santri;
+import 'hal_info.dart' as info;
 
 void main() {
   runApp(MaterialApp(
@@ -60,10 +60,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       body: new TabBarView(
         controller: controller,
         children: <Widget>[
-          new komputer.Komputer(),
-          new headset.Headset(),
-          new radio.Radio(),
-          new smartphone.Smartphone(),
+          new beranda.Beranda(),
+          new santri.Santri(),
+          new administrasi.Administrasi(),
+          new info.Info(),
         ],
       ),
       bottomNavigationBar: new Material(

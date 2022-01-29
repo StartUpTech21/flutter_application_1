@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Headset extends StatelessWidget {
+class Beranda extends StatelessWidget {
   // const Headset({ Key? key }) : super(key: key);
 
   @override
@@ -10,13 +10,16 @@ class Headset extends StatelessWidget {
         child: new Column(
           children: <Widget>[
             new Text(
-              "Santri",
+              "Beranda",
               style: new TextStyle(fontSize: 30.0),
             ),
             new Padding(
               padding: new EdgeInsets.all(20.0),
             ),
-            new Icon(Icons.account_circle_outlined, size: 90.0)
+            new Image.asset(
+              "images/beranda.png",
+              width: 200.0,
+            )
           ],
         ),
       ),

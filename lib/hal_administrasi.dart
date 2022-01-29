@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Smartphone extends StatelessWidget {
+class Administrasi extends StatelessWidget {
   // const Headset({ Key? key }) : super(key: key);
 
   @override
@@ -10,13 +10,17 @@ class Smartphone extends StatelessWidget {
         child: new Column(
           children: <Widget>[
             new Text(
-              "Info",
+              "Administrasi",
               style: new TextStyle(fontSize: 30.0),
             ),
             new Padding(
               padding: new EdgeInsets.all(20.0),
             ),
-            new Icon(Icons.info, size: 90.0)
+            new Image(
+              image: new NetworkImage(
+                  "https://i.pinimg.com/originals/97/26/67/9726674f04c3f3d738ba1f1a4e55cd2d.png"),
+              width: 200.0,
+            )
           ],
         ),
       ),
