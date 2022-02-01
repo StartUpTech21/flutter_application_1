@@ -15,94 +15,36 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String teks = "";
-
-  TextEditingController controllerInput = new TextEditingController();
-  TextEditingController controllerAlert = new TextEditingController();
-  TextEditingController controllerSnackBar = new TextEditingController();
-
-  final GlobalKey<ScaffoldState> _scaffoldstate =
-      new GlobalKey<ScaffoldState>();
-
-  void _snackbar(String str) {
-    if (str.isEmpty) return;
-    _scaffoldstate.currentState!.showSnackBar(new SnackBar(
-      content: new Text(
-        str,
-        style: new TextStyle(fontSize: 20.0),
-      ),
-      duration: new Duration(seconds: 3),
-    ));
-  }
-
-  void _alertdialog(String str) {
-    if (str.isEmpty) return;
-    AlertDialog alertDialog = new AlertDialog(
-      content: new Text(
-        str,
-        style: new TextStyle(fontSize: 20.0),
-      ),
-      actions: <Widget>[
-        new RaisedButton(
-          color: Colors.purple,
-          child: new Text("OK"),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ],
-    );
-
-    showDialog(builder: (context) => alertDialog, context: context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        key: _scaffoldstate,
-        appBar: new AppBar(
-          title: new Text("INPUT TEXT, ALERT DIALOG & SNACKBAR"),
-          backgroundColor: Colors.purple,
+      appBar: new AppBar(
+        title: new Text("SIDAFA - Demo Sidebar (DRAWER)"),
+        backgroundColor: Colors.green,
+      ),
+      drawer: new Drawer(
+        child: new ListView(
+          children: <Widget>[
+            new UserAccountsDrawerHeader(
+              accountName: new Text("Widi Arrohman"),
+              accountEmail: new Text("widiarrohman1234@gmail.com"),
+              currentAccountPicture: new Image(
+                image: new NetworkImage(
+                    "https://lh3.googleusercontent.com/a-/AOh14Ggpk7JbeThJiwzfpVSQawSfO16zhHtFT7PJrLPw7Q=s288-p-rw-no"),
+              ),
+            ),
+            new ListTile(
+              title: new Text("setting"),
+              trailing: new Icon(Icons.settings),
+            ),
+            new ListTile(
+              title: new Text("Close"),
+              trailing: new Icon(Icons.close),
+            ),
+          ],
         ),
-        body: new Container(
-          child: new Column(
-            children: <Widget>[
-              new TextField(
-                controller: controllerInput,
-                decoration: new InputDecoration(hintText: "Tulis disini"),
-                // onChanged
-                onSubmitted: (String str) {
-                  setState(() {
-                    teks = str + '\n' + teks;
-                    controllerInput.text = "";
-                  });
-                },
-              ),
-              new Text(
-                teks,
-                style: new TextStyle(fontSize: 20.0),
-              ),
-              new TextField(
-                controller: controllerAlert,
-                decoration: new InputDecoration(hintText: "Tulis untuk alert"),
-                // onChanged
-                onSubmitted: (String str) {
-                  _alertdialog(str);
-                  controllerAlert.text = "";
-                },
-              ),
-              new TextField(
-                controller: controllerSnackBar,
-                decoration:
-                    new InputDecoration(hintText: "Tulis untuk snackbar"),
-                // onChanged
-                onSubmitted: (String str) {
-                  _snackbar(str);
-                  controllerSnackBar.text = "";
-                },
-              ),
-            ],
-          ),
-        ));
+      ),
+      body: new Container(),
+    );
   }
 }
