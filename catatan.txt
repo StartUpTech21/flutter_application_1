@@ -1,1 +1,4 @@
 padding: EdgeInsets.all(20.0),
+
+// sidebar
+drawer: new Drawer(),
