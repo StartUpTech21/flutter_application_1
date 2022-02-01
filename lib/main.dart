@@ -17,7 +17,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String teks = "";
 
-  TextEditingController controller = new TextEditingController();
+  TextEditingController controllerInput = new TextEditingController();
+  TextEditingController controllerAlert = new TextEditingController();
 
   void _alertdialog(String str) {
     if (str.isEmpty) return;
@@ -50,19 +51,28 @@ class _HomeState extends State<Home> {
         body: new Container(
           child: new Column(
             children: <Widget>[
-              new Text(
-                teks,
-                style: new TextStyle(fontSize: 20.0),
-              ),
               new TextField(
-                controller: controller,
+                controller: controllerInput,
                 decoration: new InputDecoration(hintText: "Tulis disini"),
                 // onChanged
                 onSubmitted: (String str) {
                   setState(() {
                     teks = str + '\n' + teks;
-                    controller.text = "";
+                    controllerInput.text = "";
                   });
+                },
+              ),
+              new Text(
+                teks,
+                style: new TextStyle(fontSize: 20.0),
+              ),
+              new TextField(
+                controller: controllerAlert,
+                decoration: new InputDecoration(hintText: "Tulis untuk alert"),
+                // onChanged
+                onSubmitted: (String str) {
+                  _alertdialog(str);
+                  controllerAlert.text = "";
                 },
               ),
             ],
