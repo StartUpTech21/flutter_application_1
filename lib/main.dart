@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'dart:convert';
 
 void main() {
   runApp(MaterialApp(
@@ -18,42 +15,55 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List dataJSON;
+  String teks = "";
 
-  var JSON;
+  TextEditingController controller = new TextEditingController();
 
-  Future<String?> ambildata() async {
-    http.Response hasil = await http.get(
-      Uri.parse("https://jsonplaceholder.typicode.com/posts"),
-      headers: {"Accept": "application/json"},
+  void _alertdialog(String str) {
+    if (str.isEmpty) return;
+    AlertDialog alertDialog = new AlertDialog(
+      content: new Text(
+        str,
+        style: new TextStyle(fontSize: 20.0),
+      ),
+      actions: <Widget>[
+        new RaisedButton(
+          color: Colors.purple,
+          child: new Text("OK"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ],
     );
 
-    this.setState(() {
-      dataJSON = JSON.decode(hasil.body);
-    });
-
-    return "Success!";
-  }
-
-  @override
-  void initState() {
-    this.ambildata();
+    showDialog(builder: (context) => alertDialog, context: context);
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("List Data JSON"),
-      ),
-      body: new ListView.builder(
-        itemCount: dataJSON == null ? 0 : dataJSON.length,
-        itemBuilder: (context, i) {
-          return new Card(
-            child: new Text(dataJSON[i]['title']),
-          );
-        },
-      ),
-    );
+        appBar: new AppBar(
+          title: new Text("INPUT TEXT, ALERT DIALOG & SNACKBAR"),
+          backgroundColor: Colors.purple,
+        ),
+        body: new Container(
+          child: new Column(
+            children: <Widget>[
+              new Text(
+                teks,
+                style: new TextStyle(fontSize: 20.0),
+              ),
+              new TextField(
+                controller: controller,
+                decoration: new InputDecoration(hintText: "Tulis untuk alert"),
+                // onChanged
+                onSubmitted: (String str) {
+                  _alertdialog(str);
+                },
+              ),
+            ],
+          ),
+        ));
   }
 }
