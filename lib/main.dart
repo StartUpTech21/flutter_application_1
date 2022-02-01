@@ -56,10 +56,13 @@ class _HomeState extends State<Home> {
               ),
               new TextField(
                 controller: controller,
-                decoration: new InputDecoration(hintText: "Tulis untuk alert"),
+                decoration: new InputDecoration(hintText: "Tulis disini"),
                 // onChanged
                 onSubmitted: (String str) {
-                  _alertdialog(str);
+                  setState(() {
+                    teks = str + '\n' + teks;
+                    controller.text = "";
+                  });
                 },
               ),
             ],
