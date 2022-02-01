@@ -19,6 +19,21 @@ class _HomeState extends State<Home> {
 
   TextEditingController controllerInput = new TextEditingController();
   TextEditingController controllerAlert = new TextEditingController();
+  TextEditingController controllerSnackBar = new TextEditingController();
+
+  final GlobalKey<ScaffoldState> _scaffoldstate =
+      new GlobalKey<ScaffoldState>();
+
+  void _snackbar(String str) {
+    if (str.isEmpty) return;
+    _scaffoldstate.currentState!.showSnackBar(new SnackBar(
+      content: new Text(
+        str,
+        style: new TextStyle(fontSize: 20.0),
+      ),
+      duration: new Duration(seconds: 3),
+    ));
+  }
 
   void _alertdialog(String str) {
     if (str.isEmpty) return;
@@ -44,6 +59,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        key: _scaffoldstate,
         appBar: new AppBar(
           title: new Text("INPUT TEXT, ALERT DIALOG & SNACKBAR"),
           backgroundColor: Colors.purple,
@@ -73,6 +89,16 @@ class _HomeState extends State<Home> {
                 onSubmitted: (String str) {
                   _alertdialog(str);
                   controllerAlert.text = "";
+                },
+              ),
+              new TextField(
+                controller: controllerSnackBar,
+                decoration:
+                    new InputDecoration(hintText: "Tulis untuk snackbar"),
+                // onChanged
+                onSubmitted: (String str) {
+                  _snackbar(str);
+                  controllerSnackBar.text = "";
                 },
               ),
             ],
