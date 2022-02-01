@@ -39,6 +39,12 @@ class _HomeState extends State<Home> {
                   fit: BoxFit.cover,
                 ),
               ),
+              otherAccountsPictures: <Widget>[
+                new CircleAvatar(
+                  backgroundImage: new NetworkImage(
+                      "https://www.nicepng.com/png/detail/257-2579139_create-an-account-with-acudeen-technologies-create-account.png"),
+                ),
+              ],
             ),
             new ListTile(
               title: new Text("Beranda"),
