@@ -15,6 +15,36 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String gambar1 =
+      "https://lh3.googleusercontent.com/a-/AOh14Ggpk7JbeThJiwzfpVSQawSfO16zhHtFT7PJrLPw7Q=s288-p-rw-no";
+  String gambar2 =
+      "https://www.nicepng.com/png/detail/257-2579139_create-an-account-with-acudeen-technologies-create-account.png";
+  late String backupGambar;
+
+  String nama1 = "Widi Arrohman";
+  String nama2 = "User Guest";
+  late String backupNama;
+
+  String email1 = "widiarrohman1234@gmail.com";
+  String email2 = "guest@gmail.com";
+  late String backupEmail;
+
+  void gantiuser() {
+    this.setState(() {
+      backupGambar = gambar1;
+      gambar1 = gambar2;
+      gambar2 = backupGambar;
+
+      backupNama = nama1;
+      nama1 = nama2;
+      nama2 = backupNama;
+
+      backupEmail = email1;
+      email1 = email2;
+      email2 = backupEmail;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -26,11 +56,10 @@ class _HomeState extends State<Home> {
         child: new ListView(
           children: <Widget>[
             new UserAccountsDrawerHeader(
-              accountName: new Text("Widi Arrohman"),
-              accountEmail: new Text("widiarrohman1234@gmail.com"),
+              accountName: new Text(nama1),
+              accountEmail: new Text(email1),
               currentAccountPicture: new CircleAvatar(
-                backgroundImage: new NetworkImage(
-                    "https://lh3.googleusercontent.com/a-/AOh14Ggpk7JbeThJiwzfpVSQawSfO16zhHtFT7PJrLPw7Q=s288-p-rw-no"),
+                backgroundImage: new NetworkImage(gambar1),
               ),
               decoration: new BoxDecoration(
                 image: new DecorationImage(
@@ -40,9 +69,11 @@ class _HomeState extends State<Home> {
                 ),
               ),
               otherAccountsPictures: <Widget>[
-                new CircleAvatar(
-                  backgroundImage: new NetworkImage(
-                      "https://www.nicepng.com/png/detail/257-2579139_create-an-account-with-acudeen-technologies-create-account.png"),
+                new GestureDetector(
+                  onTap: () => gantiuser(),
+                  child: new CircleAvatar(
+                    backgroundImage: new NetworkImage(gambar2),
+                  ),
                 ),
               ],
             ),
